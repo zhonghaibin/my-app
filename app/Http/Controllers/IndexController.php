@@ -11,4 +11,11 @@ class IndexController extends Controller
         return view('index.home');
 
     }
+
+
+    public function posts(){
+
+        return view('index.posts');
+
+    }
 }

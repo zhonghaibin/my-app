@@ -40,33 +40,28 @@
                 </div>
             </div>
         </div>
-
         <div class="relative sm:flex sm:justify-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
 
             <div class="max-w-7xl mx-auto p-6 lg:p-8">
-
-                <div class="mt-16">
-                    <div class=" grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 ">
-                        <a href="#" class="scale-100 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-gray-100">
-                            <div class="text-sm font-mon">
-                                <div class="flex items-center justify-center">
-                                    <img  src="{{asset('images/test.png')}}"  class="object-none object-center h-40 w-full rounded-t-lg">
-                                </div>
-                                <div class="p-3">
-                                    <div class="grid grid-flow-row-dense grid-cols-2 grid-rows-1">
-                                        <div>第一期 测试的标题</div>
-                                        <div class="text-right">2020-02-01</div>
-                                    </div>
-                                    <p class="mt-2 text-gray-500 leading-relaxed text-xs">
-                                        封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                    </p>
-                                </div>
-
+                <div class=" grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 ">
+                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-gray-100">
+                        <div class="text-sm font-mon">
+                            <div class="flex items-center justify-center">
+                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
                             </div>
-                        </a>
-                    </div>
-                </div>
+                            <div class="p-3 subpixel-antialiased">
+                                <div class="w-full flex justify-between items-center leading-tight">
+                                    <div class="text-gray-800">第一期 - 测试的标题</div>
+                                    <div class="text-sm text-gray-600">2020/02/01</div>
+                                </div>
+                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
+                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
+                                </p>
+                            </div>
 
+                        </div>
+                    </a>
+                </div>
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                     <div class="text-center text-sm text-gray-500 sm:text-left">
                         <div class="flex items-center gap-4">
@@ -85,6 +80,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>
