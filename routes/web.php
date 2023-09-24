@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\IndexController::class,'home']);
+Route::get('/', [\App\Http\Controllers\IndexController::class,'home'])->name('home');
 Route::get('/posts', [\App\Http\Controllers\IndexController::class,'posts'])->name('posts');
 
 Route::middleware([
