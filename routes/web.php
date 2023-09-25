@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\IndexController::class,'home'])->name('home');
-Route::get('/posts', [\App\Http\Controllers\IndexController::class,'posts'])->name('posts');
-
+Route::get('/posts/{article_id}', [\App\Http\Controllers\IndexController::class,'posts'])->name('posts');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\ArticleController::class,'dashboard'])->name('dashboard');
+    Route::get('/article', [\App\Http\Controllers\ArticleController::class,'index'])->name('article.index');
 });

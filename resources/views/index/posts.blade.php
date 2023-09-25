@@ -51,7 +51,9 @@
                 <div class="h-8 bg-gradient-to-b from-white dark:from-slate-900"></div>
             </div>
             <ul>
-                <li><a class="group flex items-center text-base text-black hover:text-sky-700  lg:leading-6  p-2" href="#"> 第1期 - 测试页面</a></li>
+                @foreach($articles as $article)
+                <li><a class="group flex items-center text-base text-black hover:text-sky-700 lg:leading-6 p-2" href="{{route('posts',$article->id)}}"> {{$article->journal}} -  {{$article->title}}</a></li>
+                @endforeach
             </ul>
         </nav>
         </div>
@@ -60,17 +62,17 @@
                 <div>
                     <div class="flex items-center pt-2">
                         <h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">
-                            <span style="vertical-align: inherit;">第1期 - 测试页面</span>
+                            <span style="vertical-align: inherit;">{{$article->journal}} -  {{$article->title}}</span>
                         </h1>
                     </div>
                     <div class="pt-2">
-                       <a href="" > <img  src="{{asset('images/test.png')}}" class="object-fill object-center" ></a>
+                       <a href="" > <img  src="  {{$article->cover}}" class="object-fill object-center" ></a>
                     </div>
                 </div>
             </header>
             <main class="max-w-4xl mx-auto relative z-20 pt-10 xl:max-w-none text-black">
 
-                <img  src="{{asset('images/test.png')}}" class="object-fill object-center" >
+                {{$article->feeds->content}}
 
             </main>
             <footer class="text-sm leading-6 mt-16">

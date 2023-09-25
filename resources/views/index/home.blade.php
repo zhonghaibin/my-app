@@ -46,198 +46,24 @@
 
             <div class="max-w-7xl mx-auto p-4 lg:p-8">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 ">
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
+                    @foreach($articles as $article)
+                        <a href="{{route('posts',$article->id)}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
+                            <div class="text-sm font-mon">
+                                <div class="flex items-center justify-center">
+                                    <img  src="{{$article->cover}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
                                 </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
+                                <div class="p-3 subpixel-antialiased">
+                                    <div class="w-full flex justify-between items-center leading-tight">
+                                        <div class="text-gray-800">  {{$article->journal}} -  {{$article->title}}</div>
+                                        <div class="text-sm text-gray-600">{{$article->feeds->created_at->format('Y/m/d')}}</div>
+                                    </div>
+                                    <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
+                                       {{$article->feeds->content}}
+                                    </p>
                                 </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
                             </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="{{route('posts')}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                        <div class="text-sm font-mon">
-                            <div class="flex items-center justify-center">
-                                <img  src="{{asset('images/test.png')}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
-                            </div>
-                            <div class="p-3 subpixel-antialiased">
-                                <div class="w-full flex justify-between items-center leading-tight">
-                                    <div class="text-gray-800">第一期 - 测试的标题</div>
-                                    <div class="text-sm text-gray-600">2020/02/01</div>
-                                </div>
-                                <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
-                                    封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这封面图来源于周末去了一趟杭州宜家，今年第四次去了，每次都能够买到一些小东西，这
-                                </p>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    @endforeach
 
                 </div>
 
