@@ -28,7 +28,7 @@
                     <div class="flex items-center sm:ml-6 ml-3 relative">
                         @if (Route::has('login'))
                             @auth
-                                <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">  {{ __('Dashboard') }}</a>
+                                <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600">  {{ __('Dashboard') }}</a>
                             @else
                                 <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Login') }}</a>
 
@@ -42,13 +42,13 @@
             </div>
         </div>
 
-        <div class="relative sm:flex sm:justify-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
+        <div class="relative  sm:justify-center min-h-screen bg-dots-darker bg-center bg-gray-100 selection:bg-red-500 selection:text-white">
 
             <div class="max-w-7xl mx-auto p-4 lg:p-8">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 ">
-                    @foreach($articles as $article)
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 w-full">
+                    @forelse($articles as $article)
                         <a href="{{route('posts',$article->id)}}" class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
-                            <div class="text-sm font-mon">
+                            <div class="text-sm font-mon w-full">
                                 <div class="flex items-center justify-center">
                                     <img  src="{{$article->cover}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
                                 </div>
@@ -57,13 +57,15 @@
                                         <div class="text-gray-800">  {{$article->journal}} -  {{$article->title}}</div>
                                         <div class="text-sm text-gray-600">{{$article->feeds->created_at->format('Y/m/d')}}</div>
                                     </div>
-                                    <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2">
+                                    <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2 h-10">
                                        {{$article->feeds->content}}
                                     </p>
                                 </div>
                             </div>
                         </a>
-                    @endforeach
+                    @empty
+                        <span class="justify-center text-center col-span-4 p-3">暂无数据</span>
+                    @endforelse
 
                 </div>
 

@@ -2,24 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Articles;
 
 class ArticleController extends Controller
 {
+    //
 
-    public function dashboard(){
-        return view('dashboard');
-    }
-
-    public function index()
+    public function edit()
     {
-
+        return view('articles.edit');
     }
-
-    public function create()
-    {
-
-    }
-
-
 }
