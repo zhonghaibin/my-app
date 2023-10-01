@@ -17,4 +17,5 @@ return [
     'taskList' => 'true',  //任务列表
     'imageUpload' => 'true',  //图片本地上传支持
     'sequenceDiagram' => 'true',  //开启时序/序列图支持
+    'upload_url' => "/upload/image",
 ];

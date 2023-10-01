@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "67d8a67e3435922a7a353137029366aa",
+    "content-hash": "59a3a073a6d0ef77f88778a4154cde62",
     "packages": [
         {
             "name": "archtechx/enums",
@@ -2190,36 +2190,6 @@
                 "psysh"
             ],
             "time": "2023-08-15T14:27:00+00:00"
-        },
-        {
-            "name": "laravelchen/laravel-editormd",
-            "version": "2.3",
-            "dist": {
-                "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/laravelchen/laravel-editormd/2.3/laravelchen-laravel-editormd-2.3.zip",
-                "reference": "2e63dd09df85dc08a05d22af13979e03491076c5",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/helper.php"
-                ],
-                "psr-4": {
-                    "LaravelChen\\Editormd\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "LaravelChen",
-                    "email": "848407695@qq.com"
-                }
-            ],
-            "description": "laravel-editor-mb",
-            "time": "2017-08-03T00:35:23+00:00"
         },
         {
             "name": "league/commonmark",

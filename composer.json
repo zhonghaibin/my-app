@@ -14,7 +14,6 @@
         "laravel/octane": "^2.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "laravelchen/laravel-editormd": "^2.3",
         "livewire/livewire": "^3.0",
         "spiral/roadrunner-cli": "^2.5",
         "spiral/roadrunner-http": "3.0.1"
@@ -33,7 +32,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/editormd.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
