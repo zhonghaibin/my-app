@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.8",
         "laravelchen/laravel-editormd": "^2.3",
         "livewire/livewire": "^3.0",
+        "spiral/roadrunner-cli": "^2.5",
         "spiral/roadrunner-http": "3.0.1"
     },
     "require-dev": {
