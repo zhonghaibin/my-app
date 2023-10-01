@@ -17,7 +17,7 @@
                         </a>
                         <div class="p-3 subpixel-antialiased">
                             <div class="w-full flex justify-between items-center leading-tight">
-                                <div class="text-gray-800">  {{$article->title}} -  {{$article->subtitle}}</div>
+                                <div class="text-gray-800 truncate">  {{$article->title}} -  {{$article->subtitle}}</div>
                                 <div class="text-sm text-gray-600">{{$article->feeds->created_at->format('Y/m/d')}}</div>
                             </div>
                             <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2 h-10">
@@ -25,8 +25,8 @@
                             </p>
                         </div>
                         <div class="flex justify-end ">
-                            <a href="{{route('article.edit',$article->id)}}" class="text-sm  m-4 text-gray-600 hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">编辑</a>
-                            <a href="#" class="text-sm  m-4 text-gray-600 hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" wire:click="delete({{$article->id}})">删除</a>
+                            <a href="{{route('article.edit',$article->id)}}" class="text-sm  m-2  hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-green-600 p-1 text-gray-50">编辑</a>
+                            <a href="#" class="text-sm  m-2 hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  bg-red-600 p-1 text-gray-50" wire:click="delete({{$article->id}})">删除</a>
                         </div>
                     </div>
                 </div>
