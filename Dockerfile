@@ -14,7 +14,7 @@ COPY . /app
 #    php artisan key:generate && \
 #    chmod -R 777 storage bootstrap/cache
 RUN php artisan key:generate && \
-    chmod -R 777 storage bootstrap/cache
+    chmod -R 777 storage bootstrap/cache public/uploads \
 EXPOSE 8000
 
 ENTRYPOINT  ["php", "artisan", "octane:start","--host=0.0.0.0"]
