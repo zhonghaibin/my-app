@@ -21,6 +21,8 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\HomeController::class,'dashboard'])->name('dashboard');
-    Route::view('/article/create','articles/create')->name('article.create');
-    Route::get('/article/edit/{id}',[\App\Http\Controllers\ArticleController::class,'edit'])->name('article.edit');
+    Route::get('/article/create',[\App\Http\Controllers\ArticleController::class,'create'])->name('article.create');
+    Route::post('/article/store',[\App\Http\Controllers\ArticleController::class,'store'])->name('article.store');
+    Route::get('/article/edit/{article}',[\App\Http\Controllers\ArticleController::class,'edit'])->name('article.edit');
+    Route::post('/article/update/{article}',[\App\Http\Controllers\ArticleController::class,'update'])->name('article.update');
 });

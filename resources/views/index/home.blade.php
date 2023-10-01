@@ -30,10 +30,10 @@
                             @auth
                                 <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600">  {{ __('Dashboard') }}</a>
                             @else
-                                <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Login') }}</a>
+                                <a href="{{ route('login') }}" class="font-semibold text-gray-600">{{ __('Login') }}</a>
 
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Register') }}</a>
+                                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600">{{ __('Register') }}</a>
                                 @endif
                             @endauth
                         @endif
@@ -54,11 +54,11 @@
                                 </div>
                                 <div class="p-3 subpixel-antialiased">
                                     <div class="w-full flex justify-between items-center leading-tight">
-                                        <div class="text-gray-800">  {{$article->journal}} -  {{$article->title}}</div>
+                                        <div class="text-gray-800">  {{$article->title}} - {{$article->subtitle}}</div>
                                         <div class="text-sm text-gray-600">{{$article->feeds->created_at->format('Y/m/d')}}</div>
                                     </div>
                                     <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2 h-10">
-                                       {{$article->feeds->content}}
+                                       {{$article->description}}
                                     </p>
                                 </div>
                             </div>

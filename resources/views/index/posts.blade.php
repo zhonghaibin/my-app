@@ -32,10 +32,10 @@
                         @auth
                             <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600">  {{ __('Dashboard') }}</a>
                         @else
-                            <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Login') }}</a>
+                            <a href="{{ route('login') }}" class="font-semibold text-gray-600">{{ __('Login') }}</a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Register') }}</a>
+                                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600">{{ __('Register') }}</a>
                             @endif
                         @endauth
                     @endif
@@ -53,8 +53,8 @@
             <ul>
                 @foreach($articles as $item)
                 <li><a class="group flex items-center text-base  hover:text-sky-700 lg:leading-6  p-2 hover:decoration-blue-400
-                        {{$item->id == request()->route('id') ?"text-green-700":"text-orange-600"}}"
-                       href="{{route('posts',$item->id)}}"> {{$item->journal}} - {{$item->title}}
+                        {{$item->id == request()->route('id') ?"text-orange-600":"text-black-600"}}"
+                       href="{{route('posts',$item->id)}}"> {{$article->title}} - {{$article->subtitle}}
                     </a>
                 </li>
                 @endforeach
@@ -66,16 +66,13 @@
                 <div>
                     <div class="flex items-center pt-2">
                         <h1 class="inline-block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight dark:text-slate-200">
-                            <span style="vertical-align: inherit;">{{$article->journal}} - {{$article->title}}</span>
+                            <span style="vertical-align: inherit;"> {{$article->title}} - {{$article->subtitle}}</span>
                         </h1>
-                    </div>
-                    <div class="pt-2">
-                      <img src="{{$article->cover}}" class="object-fill object-center" >
                     </div>
                 </div>
             </header>
             <main class="max-w-4xl mx-auto relative z-20 pt-10 xl:max-w-none text-black">
-                {{$article->feeds->content}} {{rand(1,1000)}} {{$article->id}}
+                {!! $article->feeds->html !!}
             </main>
             <footer class="text-sm leading-6 mt-16">
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
@@ -87,7 +84,9 @@
         </div>
         </div>
     </div>
-
 </div>
+@section('styles')
+    {!! editor_css() !!}
+@endsection
 </body>
 </html>
