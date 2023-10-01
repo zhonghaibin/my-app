@@ -53,4 +53,4 @@ jobs:
                /usr/local/bin/docker stop my-app
                /usr/local/bin/docker rm my-app
                /usr/local/bin/docker run --name=my-app --link=mysql -d -p 8000:8000  zhonghaibin/my-app:1.0
-               /usr/local/bin/docker cp /volume1/docker/web/my-app/.env mm_php:/app/.env
+               /usr/local/bin/docker cp /volume1/docker/web/my-app/.env my-app:/app/.env
