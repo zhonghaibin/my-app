@@ -22,8 +22,8 @@
                             <x-label for="status" value="发布状态"/>
                             <select id="status" name="status"
                                     class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                <option value="1"  {{$article->status ==1 ?'selected':''}}> 上架</option>
-                                <option value="0"  {{$article->status ==0 ?'selected':''}}> 下架</option>
+                                <option value="{{\App\Enum\Article::STATUS_OPEN }}"  {{$article->status ==\App\Enum\Article::STATUS_OPEN ?'selected':''}}> 上架</option>
+                                <option value="{{\App\Enum\Article::STATUS_CLOSE}}"  {{$article->status ==\App\Enum\Article::STATUS_CLOSE ?'selected':''}}> 下架</option>
                             </select>
                         </div>
                         <div>

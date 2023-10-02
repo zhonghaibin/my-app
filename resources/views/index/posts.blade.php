@@ -22,7 +22,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}" class="content-title flex align-middle text-gray-800 text-3xl">
+                    <a href="{{ route('home') }}" class="content-title flex align-middle text-gray-800 text-3xl justify-center  items-center relative">
                         <x-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
@@ -52,7 +52,7 @@
                 </div>
                 <ul>
                     @foreach($articles as $item)
-                        <li><a class="group flex items-center   lg:leading-6  p-2 hover:text-orange-600 text-lg
+                        <li><a class="group flex items-center   lg:leading-6  py-2 hover:text-orange-600 text-lg
                         {{$item->id == request()->route('id') ?"text-orange-600":"text-black"}}"
                                href="{{route('posts',$item->id)}}"> {{$item->title}} - {{$item->subtitle}}
                             </a>
@@ -73,11 +73,29 @@
             </header>
             <main class="max-w-4xl mx-auto relative z-20 pt-10 xl:max-w-none text-black break-words w-full whitespace-normal">
                 <div id="editormd_id">
-                    <textarea> {!!$article->feeds->content!!}</textarea>
+                    <textarea style="display: none"> {!!$article->feeds->content!!}</textarea>
                 </div>
+                <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
+                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                        发布日期:{{$article->feeds->created_at->format('Y/m/d')}}
+                    </div>
+                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                        @if($prev)
+                            <a href="{{route('posts',$prev->id)}}" >上一篇</a>|
+                        @endif
+                        @if($next)
+                            <a href="{{route('posts',$next->id)}}" >下一篇</a>|
+                        @endif
+                        <a href="/" >去首页</a>
+                    </div>
+                </div>
+
             </main>
             <footer class="text-sm leading-6 mt-16">
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
+                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                        <a href="https://github.com/zhonghaibin/my-app"  class="font-semibold text-gray-600">GitHub</a>
+                    </div>
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>

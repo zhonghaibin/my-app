@@ -20,7 +20,7 @@
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <a href="{{ route('home') }}" class="content-title flex align-middle text-gray-800 text-3xl">
+                            <a href="{{ route('home') }}" class="content-title flex align-middle text-gray-800 text-3xl justify-center  items-center relative">
                                 <x-application-mark class="block h-9 w-auto" />
                             </a>
                         </div>
@@ -70,6 +70,9 @@
                 </div>
 
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
+                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                        <a href="https://github.com/zhonghaibin/my-app"  class="font-semibold text-gray-600">GitHub</a>
+                    </div>
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                         Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
