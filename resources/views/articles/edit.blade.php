@@ -8,7 +8,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="w-full mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg" xmlns="http://www.w3.org/1999/html">
-                    <form method="POST" action="{{route('article.update',$article->id)}}" >
+                    <form method="POST" action="{{route('article.save',$article->id)}}" >
                       @csrf
                         <div>
                             <x-label for="title" value="标题" />
@@ -22,14 +22,13 @@
                             <x-label for="status" value="发布状态"/>
                             <select id="status" name="status"
                                     class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                <option value="1"> 上架</option>
-                                <option value="0"> 下架</option>
+                                <option value="1"  {{$article->status ==1 ?'selected':''}}> 上架</option>
+                                <option value="0"  {{$article->status ==0 ?'selected':''}}> 下架</option>
                             </select>
                         </div>
                         <div>
                         </div>
                         <div>
-
                             <x-label for="content" value="内容" />
                             <div id="editormd_id">
                                 <textarea name="content" style="display:none;"> {!!$article->feeds->content!!}</textarea>
@@ -51,5 +50,6 @@
     @section('scripts')
         <script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
         {!! editor_js() !!}
+        {!! editor_init() !!}
     @endsection
 </x-app-layout>

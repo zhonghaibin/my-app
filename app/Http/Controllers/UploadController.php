@@ -37,7 +37,6 @@ class UploadController extends Controller
             return ['success' => 0, 'message' => '文件校验失败'];
         }
         $file->move($savepath, $fileName);
-        $url = url($filePath . $fileName);
-        return ['success' => 1, 'url' => $url];
+        return ['success' => 1, 'url' => $filePath . $fileName];
     }
 }

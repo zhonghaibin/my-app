@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="w-full mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg" xmlns="http://www.w3.org/1999/html">
-                    <form method="POST" action="{{route('article.store')}}" >
+                    <form method="POST" action="{{route('article.save')}}" >
                         @csrf
                         <div>
                             <x-label for="title" value="标题" />
@@ -49,5 +49,6 @@
     @section('scripts')
         <script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
         {!! editor_js() !!}
+        {!! editor_init() !!}
     @endsection
 </x-app-layout>

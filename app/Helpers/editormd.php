@@ -23,15 +23,20 @@ if (!function_exists("editor_js")) {
 <script src="/vendor/editormd/lib/underscore.min.js"></script>
 <script src="/vendor/editormd/lib/sequence-diagram.min.js"></script>
 <script src="/vendor/editormd/lib/flowchart.min.js"></script>
-<script src="/vendor/editormd/lib/jquery.flowchart.min.js"></script>
+<script src="/vendor/editormd/lib/jquery.flowchart.min.js"></script>';
+    }
+}
+if (!function_exists("editor_init")) {
+    function editor_init()
+    {
+        return '
 <script>
-    var testEditor;
     $(function () {
         editormd.emoji = {
             path: "//staticfile.qnssl.com/emoji-cheat-sheet/1.0.0/",
             ext: ".png"
         };
-        testEditor = editormd({
+         editormd({
             id: "editormd_id",
             width: "' . config('editormd.width') . '",
             height:' . config('editormd.height') . ',
@@ -53,7 +58,20 @@ if (!function_exists("editor_js")) {
             imageUploadURL: "'.config('editormd.upload_url').'?_token=' . csrf_token() .'",
         });
     })
-</script>
-    ';
+</script>';
+    }
+}
+
+if (!function_exists("editor_preview_init")) {
+    function editor_preview_init()
+    {
+        return '
+<script>
+ $(function () {
+            editormd.markdownToHTML("editormd_id", {
+                htmlDecode: "style,script,iframe"
+            });
+        })
+</script>';
     }
 }
