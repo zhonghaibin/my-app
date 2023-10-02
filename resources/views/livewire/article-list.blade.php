@@ -4,14 +4,14 @@
             添加文章
         </a>
     </div>
-    <div class="max-w-7xl">
+    <div class="max-w-7xl px-2">
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 ">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8">
             @forelse($articles as $article)
                 <div class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250 m-1">
-                    <div class="text-sm font-mon  w-full">
+                    <div class="text-sm font-mon w-full rounded-t-lg">
                         <a href="{{route('posts',$article->id)}}">
-                            <div class="flex items-center justify-center">
+                            <div class="flex items-center justify-center rounded-t-lg">
                                     <img  src="{{$article->cover}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
                             </div>
                         </a>

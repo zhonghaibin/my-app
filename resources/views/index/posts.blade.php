@@ -52,7 +52,7 @@
                 </div>
                 <ul>
                     @foreach($articles as $item)
-                        <li><a class="group flex items-center   lg:leading-6  py-2 hover:text-orange-600 text-lg
+                        <li><a class="group flex items-center lg:leading-6  py-2 hover:text-orange-600 text-lg
                         {{$item->id == request()->route('id') ?"text-orange-600":"text-black"}}"
                                href="{{route('posts',$item->id)}}"> {{$item->title}} - {{$item->subtitle}}
                             </a>
@@ -72,7 +72,7 @@
                 </div>
             </header>
             <main class="max-w-4xl mx-auto relative z-20 pt-10 xl:max-w-none text-black break-words w-full whitespace-normal">
-                <div id="editormd_id">
+                <div id="editormd_id" style="padding: 0">
                     <textarea style="display: none"> {!!$article->feeds->content!!}</textarea>
                 </div>
                 <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">

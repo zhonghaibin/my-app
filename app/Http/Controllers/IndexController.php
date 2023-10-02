@@ -9,6 +9,7 @@ class IndexController extends Controller
 {
     public function home()
     {
+
         $articles = Articles::query()->where(['status' => Article::STATUS_OPEN])->get()->reverse();
         return view('index.home', compact('articles'));
     }
