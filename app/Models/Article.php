@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Articles extends Model
+class Article extends Model
 {
     use HasFactory;
+
+    protected $table = 'articles';
 
     public $fillable = ['user_id', 'subtitle', 'title', 'description', 'cover', 'status'];
 

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Articles;
+use App\Models\Article;
 use App\Models\Feeds;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
 
@@ -18,12 +19,12 @@ class ArticleController extends Controller
         return view('articles.create');
     }
 
-    public function edit(Articles $article)
+    public function edit(Article $article)
     {
         return view('articles.edit', compact('article'));
     }
 
-    public function save(Request $request, Articles $article, Feeds $feeds, \Parsedown $parsedown)
+    public function save(Request $request, Article $article, Feeds $feeds, \Parsedown $parsedown)
     {
         DB::beginTransaction();
         try {
@@ -47,7 +48,7 @@ class ArticleController extends Controller
                     'html'=>$html,
                 ]);
             }
-
+            Cache::forget('articles');
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -57,13 +58,13 @@ class ArticleController extends Controller
     }
 
     /**
-     * @param Articles $article
+     * @param Article $article
      * @param array $data
      * @param string $cover
      * @param string $description
      * @return void
      */
-    public function extracted(Articles $article, array $data, string $cover, string $description): void
+    public function extracted(Article $article, array $data, string $cover, string $description): void
     {
         $article->user_id = auth()->user()->id;
         $article->title = $data['title'];

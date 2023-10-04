@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Articles;
+use App\Models\Article;
 
 class ArticleList extends Component
 {
@@ -18,10 +18,10 @@ class ArticleList extends Component
         $this->fetchArticle();
     }
     public function fetchArticle(){
-        $this->articles=Articles::query()->where(['user_id'=>auth()->user()->id])->get()->reverse();
+        $this->articles=Article::query()->where(['user_id'=>auth()->user()->id])->get()->reverse();
     }
 
-    public function delete(Articles $articles){
+    public function delete(Article $articles){
 
         $articles->delete();
         $articles->feeds()->delete();
