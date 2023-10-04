@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Enum\Article;
 use App\Models\Articles;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-
-        $articles = Articles::query()->where(['status' => Article::STATUS_OPEN])->get()->reverse();
+        $keyword=$request->get('keyword');
+        $builder = Articles::query()->where(['status' => Article::STATUS_OPEN]);
+        $builder->when($keyword,function (Builder $builder,$keyword){
+            $builder->where('subtitle','like','%'.$keyword.'%');
+        });
+        $articles =$builder ->get()->reverse();
         return view('index.home', compact('articles'));
     }
 
