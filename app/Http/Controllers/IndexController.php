@@ -26,9 +26,8 @@ class IndexController extends Controller
     }
 
 
-    public function posts($id)
+    public function posts($id=13)
     {
-        $article = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->findOrFail($id);
-        return view('index.posts', compact('article'));
+        return view('index.posts', compact('id'));
     }
 }

@@ -22,4 +22,12 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function replies(){
+        return $this->belongsTo(Comment::class, 'id','pid');
+    }
+
+    public function comment(){
+        return $this->belongsTo(Comment::class, 'pid','id');
+    }
 }

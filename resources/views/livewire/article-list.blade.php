@@ -25,8 +25,8 @@
                             </p>
                         </div>
                         <div class="flex justify-end ">
-                            <a href="{{route('article.edit',$article->id)}}" class="text-sm  m-2  hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-green-600 p-1 text-gray-50">编辑</a>
-                            <a href="#" class="text-sm  m-2 hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  bg-red-600 p-1 text-gray-50" wire:click="delete({{$article->id}})">删除</a>
+                            <a href="{{route('article.edit',$article->id)}}" class="text-sm m-2 rounded-md bg-green-600 p-1 text-gray-50">编辑</a>
+                            <a href="#" class="cursor-pointer text-sm rounded-md bg-red-600 p-1 text-gray-50 m-2" wire:click="delete({{$article->id}})">删除</a>
                         </div>
                     </div>
                 </div>

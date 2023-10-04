@@ -10,19 +10,20 @@ use Livewire\Component;
 class Posts extends Component
 {
 
-    public $article;
-    public $articles;
-    public $prev;
-    public $next;
+    public $article = '';
+    public $articles = '';
+    public $prev = '';
+    public $next = '';
+
     public function mount($id)
     {
         $this->article = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->findOrFail($id);
         $this->article->increment("click");
-        $this->articles =Cache::remember('articles',86400,function (){
+        $this->articles = Cache::remember('articles', 86400, function () {
             return Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->get()->reverse();
         });
         $this->prev = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->where('id', '>', $id)->first();
-        $this->next = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->where('id', '<', $id)->orderBy('id','desc')->first();
+        $this->next = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->where('id', '<', $id)->orderBy('id', 'desc')->first();
     }
 
 
