@@ -14,9 +14,11 @@
             <div class="grid grid-cols-2  text-gray-800 py-4 text-sm">
                 <div class="pl-2">
                     <a href="#" class="text-xs cursor-pointer rounded-md bg-green-600 p-1 text-gray-50" wire:click="replies({{$comment->id}})">回复</a>
-                    @if(auth()->user()->id==$comment->user_id)
-                    <span wire:click="delComment({{$comment->id}})" class="cursor-pointer text-xs rounded-md bg-red-600 p-1 text-gray-50" >删除</span>
-                    @endif
+                    @auth
+                        @if(auth()->user()->id==$comment->user_id)
+                        <span wire:click="delComment({{$comment->id}})" class="cursor-pointer text-xs rounded-md bg-red-600 p-1 text-gray-50" >删除</span>
+                        @endif
+                    @endauth
                 </div>
                 <div class="text-right">
                     <span> {{$comment->replies_count}} 条回复</span>

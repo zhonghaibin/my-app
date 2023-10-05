@@ -10,10 +10,10 @@ use Livewire\Component;
 class Posts extends Component
 {
 
-    public $article = '';
-    public $articles = '';
-    public $prev = '';
-    public $next = '';
+    public object $article;
+    public object $articles;
+    public object|null $prev;
+    public object|null $next;
 
     public function mount($id)
     {

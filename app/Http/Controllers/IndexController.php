@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Enum\Article as ArticleEnum;
 use App\Models\Article;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -26,7 +25,7 @@ class IndexController extends Controller
     }
 
 
-    public function posts($id=13)
+    public function posts($id)
     {
         return view('index.posts', compact('id'));
     }

@@ -9,19 +9,19 @@ use App\Models\Comment;
 
 class PostsComments extends Component
 {
-    public $comments = '';
+    public object $comments;
 
-    public $article_id = '';
+    public string $article_id = '';
 
-    public $content = '';
+    public string $content = '';
 
-    public $pid = 0;
+    public int $pid = 0;
 
-    public $replies_content = '';
+    public string $replies_content = '';
 
-    public $comment_id = 0;
+    public int $comment_id = 0;
 
-    public $hidden = 0;
+    public bool $hidden = false;
 
     public function mount()
     {
@@ -101,7 +101,7 @@ class PostsComments extends Component
     public function replies($id)
     {
         if ($this->comment_id != $id) {
-            $this->hidden = 0;
+            $this->hidden = false;
         }
         $this->comment_id = $id;
         $this->hidden = !$this->hidden;
