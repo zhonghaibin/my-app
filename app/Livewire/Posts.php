@@ -17,8 +17,7 @@ class Posts extends Component
 
     public function mount($id)
     {
-        $this->article = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->findOrFail($id);
-        $this->article->increment("click");
+        $this->article($id);
         $this->articles = Cache::remember('articles', 86400, function () {
             return Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->get()->reverse();
         });
@@ -26,6 +25,10 @@ class Posts extends Component
         $this->next = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->where('id', '<', $id)->orderBy('id', 'desc')->first();
     }
 
+    public function article($id){
+        $this->article = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->findOrFail($id);
+        $this->article->increment("click");
+    }
 
     public function render()
     {

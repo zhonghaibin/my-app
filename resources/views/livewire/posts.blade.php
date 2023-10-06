@@ -273,7 +273,7 @@
                 </header>
                 <main class="max-w-4xl mx-auto relative z-20 pt-10 xl:max-w-none text-black break-words w-full whitespace-normal">
                     <div id="editormd_id" style="padding: 0">
-                        <textarea style="display: none"> {!!$article->feeds->html!!}</textarea>
+                        <textarea style="display: none"> {!!$article->feeds->content!!}</textarea>
                     </div>
                     <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
                         <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
@@ -311,3 +311,6 @@
         </div>
     </div>
 </div>
+@push('js')
+    {!! editor_preview_init() !!}
+@endpush

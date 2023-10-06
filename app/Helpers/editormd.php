@@ -62,6 +62,16 @@ if (!function_exists("editor_init")) {
     }
 }
 
+if (!function_exists("editor_preview_js")) {
+    function editor_preview_js()
+    {
+        return '
+<script src="/vendor/editormd/js/editormd.js"></script>
+<script src="/vendor/editormd/lib/marked.min.js"></script>
+<script src="/vendor/editormd/lib/prettify.min.js"></script>';
+    }
+}
+
 if (!function_exists("editor_preview_init")) {
     function editor_preview_init()
     {
