@@ -63,13 +63,17 @@ class PostsComments extends Component
         $this->comments();
     }
 
-    public function delComment($id)
+    public function delComment(Comment $comment)
     {
         if (!auth()->check()) {
             return false;
         }
-        $comment = Comment::query()->where('user_id', auth()->user()->id)->findOrFail($id);
+        if ($comment->user_id != auth()->user()->id) {
+            $this->js('alert("无权操作")');
+            return false;
+        }
         $comment->delete();
+        $comment->replies()->delete();
         $this->comments();
     }
 

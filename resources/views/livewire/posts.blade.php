@@ -289,11 +289,16 @@
                             <a href="/">去首页</a>
                         </div>
                     </div>
+                    <div class="hidden sm:block">
+                        <div class="pb-4 pt-8">
+                            <div class="border-t border-gray-200"></div>
+                        </div>
+                    </div>
                     @livewire('posts-comments')
                 </main>
-                <footer class="text-sm leading-6 mt-16">
+                <footer class="text-sm leading-6 my-6">
                     <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                        <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                        <div class="text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                             <a href="https://github.com/zhonghaibin/my-app" class="font-semibold text-gray-600 flex">
                                 <svg viewBox="0 0 16 16" class="w-4 h-4" fill="currentColor" aria-hidden="true">
                                     <path

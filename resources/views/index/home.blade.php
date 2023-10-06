@@ -310,9 +310,8 @@
                 @endforelse
 
             </div>
-
             <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+                <div class="text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                     <a href="https://github.com/zhonghaibin/my-app" class="font-semibold text-gray-600 flex">
                         <svg viewBox="0 0 16 16" class="w-4 h-4" fill="currentColor" aria-hidden="true">
                             <path
