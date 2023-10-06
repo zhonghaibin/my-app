@@ -236,7 +236,7 @@
                 @endif
                 <div class="pt-2 pb-3 space-y-1">
                     @foreach($articles as $item)
-                        <x-responsive-nav-link href="{{route('posts',$item->id)}}" :active="$item->id===$article->id">{{$item->title}} - {{$item->subtitle}}</x-responsive-nav-link>
+                        <x-responsive-nav-link wire:navigate href="{{route('posts',$item->id)}}" :active="$item->id===$article->id">{{$item->title}} - {{$item->subtitle}}</x-responsive-nav-link>
                     @endforeach
                 </div>
             </div>

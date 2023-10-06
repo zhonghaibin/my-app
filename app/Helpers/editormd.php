@@ -16,6 +16,7 @@ if (!function_exists("editor_js")) {
     function editor_js()
     {
         return '
+<script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
 <script src="/vendor/editormd/js/editormd.js"></script>
 <script src="/vendor/editormd/lib/marked.min.js"></script>
 <script src="/vendor/editormd/lib/prettify.min.js"></script>
@@ -62,15 +63,6 @@ if (!function_exists("editor_init")) {
     }
 }
 
-if (!function_exists("editor_preview_js")) {
-    function editor_preview_js()
-    {
-        return '
-<script src="/vendor/editormd/js/editormd.js"></script>
-<script src="/vendor/editormd/lib/marked.min.js"></script>
-<script src="/vendor/editormd/lib/prettify.min.js"></script>';
-    }
-}
 
 if (!function_exists("editor_preview_init")) {
     function editor_preview_init()
@@ -78,8 +70,17 @@ if (!function_exists("editor_preview_init")) {
         return '
 <script>
  $(function () {
+             editormd.emoji = {
+                    path: "//staticfile.qnssl.com/emoji-cheat-sheet/1.0.0/",
+                    ext: ".png"
+                };
             editormd.markdownToHTML("editormd_id", {
-                htmlDecode: "style,script,iframe"
+                htmlDecode: "style,script,iframe",
+                emoji: true,
+                taskList:true,
+                tex: true,               // 默认不解析
+                flowChart:true,         // 默认不解析
+                sequenceDiagram:true,  // 默认不解析
             });
         })
 </script>';

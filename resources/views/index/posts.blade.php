@@ -7,8 +7,7 @@
     <!-- Fonts -->
     <link href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1/style.css" rel="stylesheet"/>
     {!! editor_css() !!}
-    <script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
-    {!! editor_preview_js() !!}
+    {!! editor_js() !!}
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
