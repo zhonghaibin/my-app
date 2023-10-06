@@ -14,7 +14,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['LXGWWenKaiMono-Bold', ...defaultTheme.fontFamily.sans],
+                sans: ['LXGW WenKai', ...defaultTheme.fontFamily.sans],
             },
         },
     },
