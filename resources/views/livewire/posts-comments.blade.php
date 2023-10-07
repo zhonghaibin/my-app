@@ -11,7 +11,7 @@
             </div>
             <div class="text-gray-800 py-4 text-1xl"> {{$comment->content}} </div>
             <div class="grid grid-cols-2  text-gray-800 py-4 text-sm">
-                <div class="pl-2">
+                <div>
                     <a href="#" class="text-xs cursor-pointer rounded-md bg-green-600 p-1 text-gray-50" wire:click="replies({{$comment->id}})">回复</a>
                     @auth
                         @if(auth()->user()->id==$comment->user_id)
@@ -30,7 +30,7 @@
                     @error('replies_content') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div  class="mt-2">
-                    <button type="submit" class="text-sm px-3 py-2 text-gray-400 outline-gray-400 rounded outline outline-offset-1 outline-1 w-14" >
+                    <button type="submit" class="text-sm px-3 py-1 text-gray-400 outline-gray-400 rounded outline outline-offset-1 outline-1 w-14" >
                         回复
                     </button>
                 </div>
@@ -50,7 +50,7 @@
                 @error('content') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="mt-2">
-                <button type="submit" class="text-sm  px-3 py-2 text-gray-400 outline-gray-400 rounded outline outline-offset-1 outline-1  w-18" >
+                <button type="submit" class="text-sm  px-3 py-1 text-gray-400 outline-gray-400 rounded outline outline-offset-1 outline-1  w-18" >
                     发表评论
                 </button>
             </div>
