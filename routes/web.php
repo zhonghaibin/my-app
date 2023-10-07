@@ -27,3 +27,4 @@ Route::middleware([
     Route::post('/upload/image',[\App\Http\Controllers\UploadController::class,'image'])->name('upload.image');
 });
 
+Route::get('/article/upload',[\App\Http\Controllers\ArticleController::class,'upload'])->name('article.upload');
