@@ -75,7 +75,4 @@ class ArticleController extends Controller
         $article->save();
     }
 
-    public function upload(){
-        return view('articles.upload');
-    }
 }

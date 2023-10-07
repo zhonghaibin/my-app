@@ -26,5 +26,3 @@ Route::middleware([
     Route::post('/article/save/{article?}',[\App\Http\Controllers\ArticleController::class,'save'])->name('article.save');
     Route::post('/upload/image',[\App\Http\Controllers\UploadController::class,'image'])->name('upload.image');
 });
-
-Route::get('/article/upload',[\App\Http\Controllers\ArticleController::class,'upload'])->name('article.upload');
