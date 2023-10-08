@@ -35,6 +35,4 @@ class PostsList extends Component
         }
         $this->articles = $articles;
     }
-
-
 }

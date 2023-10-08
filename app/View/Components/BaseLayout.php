@@ -14,4 +14,5 @@ class BaseLayout extends Component
     {
         return view('layouts.base');
     }
+
 }

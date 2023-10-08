@@ -4,4 +4,5 @@
             @livewire('posts-list')
         </div>
     </div>
+    <x-search></x-search>
 </x-base-layout>
