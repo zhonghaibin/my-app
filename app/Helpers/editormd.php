@@ -74,7 +74,7 @@ if (!function_exists("editor_preview_init")) {
                     path: "//staticfile.qnssl.com/emoji-cheat-sheet/1.0.0/",
                     ext: ".png"
                 };
-            editormd.markdownToHTML("editormd_id", {
+            editormd.markdownToHTML("editormd_preview_id", {
                 htmlDecode: "style,script,iframe",
                 emoji: true,
                 taskList:true,

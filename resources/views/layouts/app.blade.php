@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1/style.css" rel="stylesheet"/>
+        {!! editor_css() !!}
+        {!! editor_js() !!}
         @yield('styles')
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])

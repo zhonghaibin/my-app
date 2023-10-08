@@ -9,19 +9,9 @@ use Illuminate\Support\Facades\Cache;
 
 class IndexController extends Controller
 {
-    public function home(Request $request)
+    public function home()
     {
-        $keyword=$request->get('keyword');
-        if($keyword){
-            $builder = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN]);
-            $builder->where('subtitle', 'like', '%' . $keyword . '%');
-            $articles = $builder->get()->reverse();
-        }else{
-            $articles =Cache::remember('articles',86400,function (){
-                return Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->get()->reverse();
-            });
-        }
-        return view('index.home', compact('articles'));
+        return view('index.home');
     }
 
 

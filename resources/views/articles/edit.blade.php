@@ -44,12 +44,7 @@
             </div>
         </div>
     </div>
-    @section('styles')
-        {!! editor_css() !!}
-    @endsection
     @section('scripts')
-        <script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
-        {!! editor_js() !!}
         {!! editor_init() !!}
     @endsection
 </x-app-layout>

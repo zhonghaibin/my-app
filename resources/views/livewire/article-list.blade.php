@@ -1,16 +1,20 @@
 <div>
-    <div class="flex items-center justify-end mt-4">
-        <a class=" text-sm  m-6 p-1 text-gray-600 hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 outline outline-offset-2 outline-1" href="{{ route('article.create') }}">
+    <div class="flex items-center justify-end">
+        <a class=" text-sm  m-6 p-1 text-gray-600 hover:text-gray-900 rounded-md  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 outline outline-offset-2 outline-1" href="{{ route('article.create') }}" wire:navigate>
             添加文章
         </a>
     </div>
-    <div class="max-w-7xl px-2">
-
+    <div class="hidden sm:block">
+        <div class="py-4">
+            <div class="border-t border-gray-200"></div>
+        </div>
+    </div>
+    <div class="max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8">
             @forelse($articles as $article)
-                <div class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250 m-1">
+                <div class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
                     <div class="text-sm font-mon w-full rounded-t-lg">
-                        <a href="{{route('posts',$article->id)}}">
+                        <a href="{{route('posts',$article->id)}}" wire:navigate>
                             <div class="flex items-center justify-center rounded-t-lg">
                                     <img  src="{{$article->cover}}"  class="object-cover object-center h-40 w-full rounded-t-lg">
                             </div>
@@ -25,8 +29,8 @@
                             </p>
                         </div>
                         <div class="flex justify-end ">
-                            <a href="{{route('article.edit',$article->id)}}" class="text-sm m-2 rounded-md bg-green-600 p-1 text-gray-50">编辑</a>
-                            <a href="#" class="cursor-pointer text-sm rounded-md bg-red-600 p-1 text-gray-50 m-2" wire:click="delete({{$article->id}})">删除</a>
+                            <a href="{{route('article.edit',$article->id)}}"  wire:navigate class="text-sm my-2 bg-green-600 p-1 text-gray-50">编辑</a>
+                            <a href="#" class="cursor-pointer text-sm bg-red-600 p-1 text-gray-50 m-2" wire:click="delete({{$article->id}})">删除</a>
                         </div>
                     </div>
                 </div>
