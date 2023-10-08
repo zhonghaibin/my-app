@@ -36,10 +36,10 @@
                     </div>
                     <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
                         @if($prev)
-                            <a href="{{route('posts',$prev->id)}}"  wire:navigate>上一篇</a>|
+                            <a href="{{route('posts',$prev->id)}}"   wire:navigate>上一篇</a>|
                         @endif
                         @if($next)
-                            <a href="{{route('posts',$next->id)}}"  wire:navigate>下一篇</a>|
+                            <a href="{{route('posts',$next->id)}}"   wire:navigate>下一篇</a>|
                         @endif
                         <a href="/">去首页</a>
                     </div>

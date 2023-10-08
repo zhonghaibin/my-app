@@ -8,11 +8,11 @@
                 </div>
                 <div class="p-3 subpixel-antialiased">
                     <div class="w-full flex justify-between items-center leading-tight">
-                        <div class="text-gray-800 truncate">  {{$article->title}} - {{$article->subtitle}}</div>
+                        <div class="text-gray-800 truncate text-sm">  {{$article->title}} - {{$article->subtitle}}</div>
                         <div
                             class="text-sm text-gray-600">{{$article->feeds->created_at->format('Y/m/d')}}</div>
                     </div>
-                    <p class="mt-2 text-slate-600 leading-relaxed text-xs line-clamp-2 h-10">
+                    <p class="mt-2 text-slate-600 leading-relaxed text-sm line-clamp-2 h-10">
                         {{$article->description}}
                     </p>
                 </div>
