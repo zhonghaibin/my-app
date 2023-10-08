@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 lg:gap-8 w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-4 w-full">
     @forelse($articles as $article)
         <a href="{{route('posts',$article->id)}}" wire:navigate
            class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">
