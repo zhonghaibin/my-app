@@ -5,7 +5,7 @@ FROM  php:8.2-cli
 MAINTAINER zhonghaibin <756152823@qq.com>
 
 COPY --from=roadrunner /usr/bin/rr /app/rr
-
+WORKDIR /app
 # 将项目文件中的内容复制到 /app 这个目录下面
 COPY . /app
 
