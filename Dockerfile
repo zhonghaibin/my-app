@@ -1,6 +1,6 @@
 # 设置基础镜像
-FROM spiralscout/roadrunner:2023.1.1 AS roadrunner
-FROM  zhonghaibin/php8-cli-roadrunner:latest
+FROM  spiralscout/roadrunner:2023.3 AS roadrunner
+FROM  php:8.2-cli:latest
 # 定义作者
 MAINTAINER zhonghaibin <756152823@qq.com>
 

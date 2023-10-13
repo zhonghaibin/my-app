@@ -16,7 +16,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@2.25.5
         with:
-          php-version: '8.1'
+          php-version: '8.2'
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Copy .env file
@@ -32,14 +32,14 @@ jobs:
       - name: Build frontend
         run: npm run build
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag zhonghaibin/my-app:1.0
+        run: docker build . --file Dockerfile --tag zhonghaibin/my-app:2.0
       - name: Docker Login
         uses: docker/login-action@v2.2.0
         with:
             username: ${{secrets.DOCKER_USERNAME}}
             password: ${{secrets.DOCKER_PASSWORD}}
       - name: Push Docker images
-        run: docker push  zhonghaibin/my-app:1.0
+        run: docker push  zhonghaibin/my-app:2.0
 
       - name: SSH command
         uses: appleboy/ssh-action@v0.1.10
@@ -49,8 +49,8 @@ jobs:
             port: ${{secrets.NAS_PORT}}
             password: ${{secrets.NAS_PASSWORD}}
             script: | # 重启更新镜像
-               /usr/local/bin/docker pull zhonghaibin/my-app:1.0
+               /usr/local/bin/docker pull zhonghaibin/my-app:2.0
                /usr/local/bin/docker stop my-app
                /usr/local/bin/docker rm my-app
-               /usr/local/bin/docker run --name=my-app --link=mysql -d -p 8000:8000  -v /volume1/docker/web/my-app/:/app/public/uploads zhonghaibin/my-app:1.0
+               /usr/local/bin/docker run --name=my-app --link=mysql -d -p 8000:8000  -v /volume1/docker/web/my-app/:/app/public/uploads zhonghaibin/my-app:2.0
                /usr/local/bin/docker cp /volume1/docker/web/my-app/.env my-app:/app/.env
