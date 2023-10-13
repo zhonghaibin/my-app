@@ -2,8 +2,6 @@
 FROM  spiralscout/roadrunner:2023.3 AS roadrunner
 FROM  php:8.2-cli
 
-RUN apt-get update && apt-get install -y \
-        libpcntl-dev
 
 RUN docker-php-ext-install pcntl
 # 定义作者
