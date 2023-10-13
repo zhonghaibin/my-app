@@ -2,7 +2,7 @@
 FROM  spiralscout/roadrunner:2023.3 AS roadrunner
 FROM  php:8.2-cli
 
-RUN docker-php-ext-install pcntl mysqli  pdo_mysql gd
+RUN docker-php-ext-install pcntl  pdo_mysql mysqli
 # 定义作者
 MAINTAINER zhonghaibin <756152823@qq.com>
 
