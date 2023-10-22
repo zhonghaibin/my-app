@@ -32,7 +32,7 @@ class ArticleController extends Controller
             $content = $request->get('content') ?? '';
             $parsedown->setSafeMode(true);
             $html = $parsedown->parse($content);
-            $description = substr(str_replace(PHP_EOL, '', strip_tags($html)), 0, 200);
+            $description = mb_substr(str_replace(PHP_EOL, '', strip_tags($html)), 0, 200);
             $pattern = '/<img.*?src=["\'](.*?)["\'].*?>/i';
             preg_match_all($pattern, $html, $matches);
             $cover = $matches[1][0] ?? '/images/cover.jpg';
