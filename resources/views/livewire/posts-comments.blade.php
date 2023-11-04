@@ -5,7 +5,7 @@
         <div class="w-full">
             <div class="py-2 grid grid-cols-2">
                 <span>{{$comment->user->name}}
-                        @if($comment->pid) 回复 {{$comment->comment->user->name}}@endif
+                        @if($comment->pid) 回复 {{$comment->comment->user->name??'`(*>﹏<*)′'}}@endif
                 </span>
                 <span class="text-gray-400 text-right"> {{ $comment->created_at}}</span>
             </div>
@@ -37,8 +37,6 @@
                     </div>
                 </form>
             </div>
-
-
         </div>
         <div class="hidden sm:block">
             <div class="py-4">
@@ -47,6 +45,7 @@
         </div>
         @endforeach
         <form wire:submit="addComment">
+            <div class="text-sm bg-green-100 border border-green-200 p-2">讨论应以学习和精进为目的。请勿发布不友善或者负能量的内容，与人为善，比聪明更重要！</div>
             <div class="w-full mt-4">
                 <input type="hidden" wire:model="article_id">
                 <textarea wire:model="content" rows="3" class="w-full rounded-md border-0 text-gray-900 ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>

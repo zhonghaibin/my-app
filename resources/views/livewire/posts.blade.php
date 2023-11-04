@@ -9,7 +9,7 @@
                 <ul>
                     @foreach($articles as $item)
                         <li><a class="group flex items-center lg:leading-6  py-2 hover:text-orange-600 text-lg {{$item->id == request()->route('id') ?"text-orange-600":"text-black"}}"
-                               href="{{route('posts',$item->id)}}"  wire:navigate > {{$item->title}} - {{$item->subtitle}}
+                               href="{{route('posts',$item->id)}}"  wire:navigate> {{$item->title}} - {{$item->subtitle}}
                             </a>
                         </li>
                     @endforeach
@@ -41,7 +41,7 @@
                         @if($next)
                             <a href="{{route('posts',$next->id)}}"   wire:navigate>下一篇</a>|
                         @endif
-                        <a href="/">去首页</a>
+                        <a href="/" wire:navigate>去首页</a>
                     </div>
                 </div>
                 <div class="hidden sm:block">

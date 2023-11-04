@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
-use App\Models\Comment;
 
 class PostsComments extends Component
 {
@@ -44,7 +44,7 @@ class PostsComments extends Component
     {
         if (!auth()->check()) {
             throw ValidationException::withMessages([
-                'content' => '请先登录',
+                'content' => '您还未登录,请先登录',
             ]);
         }
 
@@ -72,16 +72,29 @@ class PostsComments extends Component
             $this->js('alert("无权操作")');
             return false;
         }
+        $replies = Comment::where('pid', $comment->id)->get();
+        $this->delChild($replies);
         $comment->delete();
-        $comment->replies()->delete();
         $this->comments();
+
+    }
+
+    protected function delChild(Comment $replies)
+    {
+        foreach ($replies as $comment) {
+            $replies = Comment::where('pid', $comment->id)->get();
+            if ($replies) {
+                $this->delChild($replies);
+            }
+            $comment->delete();
+        }
     }
 
     public function addReplies()
     {
         if (!auth()->check()) {
             throw ValidationException::withMessages([
-                'replies_content' => '请先登录',
+                'replies_content' => '您还未登录,请先登录',
             ]);
         }
 
@@ -91,6 +104,11 @@ class PostsComments extends Component
         ]);
 
         $comment = Comment::query()->find($this->comment_id);
+        if ($comment->user_id == auth()->user()->id) {
+            throw ValidationException::withMessages([
+                'replies_content' => '很抱歉,不允许您评论自己',
+            ]);
+        }
         Comment::create([
             'content' => $this->replies_content,
             'article_id' => $comment->article_id,
