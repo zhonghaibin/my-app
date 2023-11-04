@@ -9,7 +9,7 @@
             <div class="border-t border-gray-200"></div>
         </div>
     </div>
-    <div class="max-w-7xl p-2 lg:p-2">
+    <div class="max-w-7xl">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-4 w-full">
             @forelse($articles as $article)
                 <div class="scale-100 bg-white from-gray-700/50 via-transparent  shadow-2xl shadow-gray-500/20 flex  transition-all duration-250">

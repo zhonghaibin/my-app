@@ -7,14 +7,18 @@ use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 use App\Models\Article;
 
-class PostsList extends Component
+class HomeList extends Component
 {
 
     public object $articles;
 
+    protected string $keyword='';
+
+    protected $listeners=['searchEvent'=>'search'];
+
     public function render()
     {
-        return view('livewire.posts-list');
+        return view('livewire.home-list');
     }
 
     public function mount()
@@ -23,10 +27,9 @@ class PostsList extends Component
     }
 
     public function articles(){
-        $keyword=request()->get('keyword');
-        if($keyword){
+        if($this->keyword){
             $builder = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN]);
-            $builder->where('subtitle', 'like', '%' . $keyword . '%');
+            $builder->where('subtitle', 'like', '%' . $this->keyword . '%');
             $articles = $builder->get()->reverse();
         }else{
             $articles =Cache::remember('articles',86400,function (){
@@ -34,5 +37,9 @@ class PostsList extends Component
             });
         }
         $this->articles = $articles;
+    }
+    public function search($data){
+       $this->keyword=$data['keyword'];
+       $this->articles();
     }
 }
