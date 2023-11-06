@@ -13,11 +13,9 @@
             <div class="grid grid-cols-2  text-gray-800 py-4 text-sm">
                 <div>
                     <a href="#" class="text-sm my-2 bg-green-600 p-1 text-gray-50" wire:click="replies({{$comment->id}})">回复</a>
-                    @auth
-                        @if(auth()->user()->id==$comment->user_id)
+                    @can('delete-comment',$comment)
                         <span wire:click="delComment({{$comment->id}})" class="cursor-pointer text-sm bg-red-600 p-1 text-gray-50 m-2" >删除</span>
-                        @endif
-                    @endauth
+                    @endcan
                 </div>
                 <div class="text-right">
                     <span> {{$comment->replies_count}} 条回复</span>

@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Comment;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
@@ -65,33 +66,36 @@ class PostsComments extends Component
 
     public function delComment(Comment $comment)
     {
-        if (!auth()->check()) {
-            return false;
+        $this->authorize('delete-comment',$comment);
+        DB::beginTransaction();
+        try {
+            $this->delChild($comment->id);
+            $comment->delete();
+            DB::commit();
+            $this->comments();
+        }catch (\Exception $e){
+            DB::rollBack();
+            \Log::error($e);
         }
-        if ($comment->user_id != auth()->user()->id) {
-            $this->js('alert("无权操作")');
-            return false;
-        }
-        $replies = Comment::where('pid', $comment->id)->get();
-        $this->delChild($replies);
-        $comment->delete();
-        $this->comments();
+
 
     }
 
-    protected function delChild(Comment $replies)
+    protected function delChild($id)
     {
-        foreach ($replies as $comment) {
-            $replies = Comment::where('pid', $comment->id)->get();
-            if ($replies) {
-                $this->delChild($replies);
+        $replies = Comment::where('pid', $id)->get();
+        if(!$replies->isEmpty()) {
+            foreach ($replies as $comment) {
+                $this->delChild($comment->id);
+                $comment->delete();
             }
-            $comment->delete();
         }
     }
 
     public function addReplies()
     {
+
+
         if (!auth()->check()) {
             throw ValidationException::withMessages([
                 'replies_content' => '您还未登录,请先登录',
@@ -102,9 +106,9 @@ class PostsComments extends Component
             'replies_content' => 'required|string|max:255',
             'comment_id' => 'required',
         ]);
-
+        $user= auth()->user;
         $comment = Comment::query()->find($this->comment_id);
-        if ($comment->user_id == auth()->user()->id) {
+        if ($comment->user_id == $user->id) {
             throw ValidationException::withMessages([
                 'replies_content' => '很抱歉,不允许您评论自己',
             ]);
@@ -112,7 +116,7 @@ class PostsComments extends Component
         Comment::create([
             'content' => $this->replies_content,
             'article_id' => $comment->article_id,
-            'user_id' => auth()->user()->id,
+            'user_id' => $user->id,
             'pid' => $this->comment_id
         ]);
 
