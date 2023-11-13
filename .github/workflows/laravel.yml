@@ -52,5 +52,5 @@ jobs:
                /usr/local/bin/docker pull zhonghaibin/my-app:2.0
                /usr/local/bin/docker stop my-app
                /usr/local/bin/docker rm my-app
-               /usr/local/bin/docker run --name=my-app --link=mysql -d -p 8000:8000  -v /volume3/docker/my-app/uploads/:/app/public/uploads zhonghaibin/my-app:2.0
+               /usr/local/bin/docker run --name=my-app --link=mariadb -d -p 8000:8000  -v /volume3/docker/my-app/uploads/:/app/public/uploads zhonghaibin/my-app:2.0
                /usr/local/bin/docker cp /volume3/docker/my-app/.env my-app:/app/.env
