@@ -35,7 +35,6 @@ class PostsComments extends Component
         $this->comments = Comment::query()->withCount('replies')->where('article_id', $this->article_id)->get();
     }
 
-
     public function render()
     {
         return view('livewire.posts-comments');
@@ -43,7 +42,7 @@ class PostsComments extends Component
 
     public function addComment()
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             throw ValidationException::withMessages([
                 'content' => '您还未登录,请先登录',
             ]);
@@ -57,7 +56,7 @@ class PostsComments extends Component
             'content' => $this->content,
             'article_id' => $this->article_id,
             'user_id' => auth()->user()->id,
-            'pid' => $this->pid
+            'pid' => $this->pid,
         ]);
 
         $this->reset('content');
@@ -66,25 +65,24 @@ class PostsComments extends Component
 
     public function delComment(Comment $comment)
     {
-        $this->authorize('delete-comment',$comment);
+        $this->authorize('delete-comment', $comment);
         DB::beginTransaction();
         try {
             $this->delChild($comment->id);
             $comment->delete();
             DB::commit();
             $this->comments();
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             DB::rollBack();
             \Log::error($e);
         }
-
 
     }
 
     protected function delChild($id)
     {
         $replies = Comment::where('pid', $id)->get();
-        if(!$replies->isEmpty()) {
+        if (! $replies->isEmpty()) {
             foreach ($replies as $comment) {
                 $this->delChild($comment->id);
                 $comment->delete();
@@ -95,8 +93,7 @@ class PostsComments extends Component
     public function addReplies()
     {
 
-
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             throw ValidationException::withMessages([
                 'replies_content' => '您还未登录,请先登录',
             ]);
@@ -106,7 +103,7 @@ class PostsComments extends Component
             'replies_content' => 'required|string|max:255',
             'comment_id' => 'required',
         ]);
-        $user= auth()->user;
+        $user = auth()->user;
         $comment = Comment::query()->find($this->comment_id);
         if ($comment->user_id == $user->id) {
             throw ValidationException::withMessages([
@@ -117,7 +114,7 @@ class PostsComments extends Component
             'content' => $this->replies_content,
             'article_id' => $comment->article_id,
             'user_id' => $user->id,
-            'pid' => $this->comment_id
+            'pid' => $this->comment_id,
         ]);
 
         $this->reset('replies_content');
@@ -130,8 +127,7 @@ class PostsComments extends Component
             $this->hidden = false;
         }
         $this->comment_id = $id;
-        $this->hidden = !$this->hidden;
+        $this->hidden = ! $this->hidden;
         $this->comments();
     }
-
 }

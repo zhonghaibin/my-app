@@ -11,7 +11,7 @@ class Comment extends Model
 
     protected $table = 'comments';
 
-    protected $fillable = ['pid','article_id', 'user_id', 'content'];
+    protected $fillable = ['pid', 'article_id', 'user_id', 'content'];
 
     public function article()
     {
@@ -23,11 +23,13 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function replies(){
-        return $this->belongsTo(Comment::class, 'id','pid');
+    public function replies()
+    {
+        return $this->belongsTo(Comment::class, 'id', 'pid');
     }
 
-    public function comment(){
-        return $this->belongsTo(Comment::class, 'pid','id');
+    public function comment()
+    {
+        return $this->belongsTo(Comment::class, 'pid', 'id');
     }
 }

@@ -13,7 +13,6 @@ class ArticleController extends Controller
 {
     //
 
-
     public function create()
     {
         return view('articles.create');
@@ -36,34 +35,28 @@ class ArticleController extends Controller
             $pattern = '/<img.*?src=["\'](.*?)["\'].*?>/i';
             preg_match_all($pattern, $html, $matches);
             $cover = $matches[1][0] ?? '/images/cover.jpg';
-            if (!$article->id) {
+            if (! $article->id) {
                 $this->extracted($article, $data, $cover, $description);
                 $feeds->content = $content;
                 $feeds->html = $html;
                 $article->feeds()->save($feeds);
-            }else{
+            } else {
                 $this->extracted($article, $data, $cover, $description);
                 $article->feeds()->update([
-                    'content'=>$content,
-                    'html'=>$html,
+                    'content' => $content,
+                    'html' => $html,
                 ]);
             }
             Cache::forget('articles');
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
-            throw  new Exception($exception->getMessage());
+            throw new Exception($exception->getMessage());
         }
+
         return redirect()->route('dashboard');
     }
 
-    /**
-     * @param Article $article
-     * @param array $data
-     * @param string $cover
-     * @param string $description
-     * @return void
-     */
     public function extracted(Article $article, array $data, string $cover, string $description): void
     {
         $article->user_id = auth()->user()->id;
@@ -74,5 +67,4 @@ class ArticleController extends Controller
         $article->description = $description;
         $article->save();
     }
-
 }

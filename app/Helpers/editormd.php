@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists("editor_css")) {
+if (! function_exists('editor_css')) {
     function editor_css()
     {
         return '
@@ -12,7 +12,7 @@ if (!function_exists("editor_css")) {
     }
 }
 
-if (!function_exists("editor_js")) {
+if (! function_exists('editor_js')) {
     function editor_js()
     {
         return '
@@ -27,7 +27,7 @@ if (!function_exists("editor_js")) {
 <script src="/vendor/editormd/lib/jquery.flowchart.min.js"></script>';
     }
 }
-if (!function_exists("editor_init")) {
+if (! function_exists('editor_init')) {
     function editor_init()
     {
         return '
@@ -39,32 +39,31 @@ if (!function_exists("editor_init")) {
         };
          editormd({
             id: "editormd_id",
-            width: "' . config('editormd.width') . '",
-            height:' . config('editormd.height') . ',
-            theme: "' . config('editormd.theme') . '",
-            editorTheme:"' . config('editormd.editorTheme') . '",
-            previewTheme:"' . config('editormd.previewTheme') . '",
+            width: "'.config('editormd.width').'",
+            height:'.config('editormd.height').',
+            theme: "'.config('editormd.theme').'",
+            editorTheme:"'.config('editormd.editorTheme').'",
+            previewTheme:"'.config('editormd.previewTheme').'",
             path: \'/vendor/editormd/lib/\',
-            codeFold:' . config('editormd.codeFold') . ',
-            saveHTMLToTextarea: ' . config('editormd.saveHTMLToTextarea') . ',
-            searchReplace: ' . config('editormd.searchReplace') . ',
-            emoji: ' . config('editormd.emoji') . ',
-            taskList: ' . config('editormd.taskList') . ',
-            tocm: ' . config('editormd.tocm') . ',
-            tex: ' . config('editormd.tex') . ',
-            flowChart: ' . config('editormd.flowChart') . ',
-            sequenceDiagram: ' . config('editormd.sequenceDiagram') . ',
-            imageUpload: ' . config("editormd.imageUpload") . ',
+            codeFold:'.config('editormd.codeFold').',
+            saveHTMLToTextarea: '.config('editormd.saveHTMLToTextarea').',
+            searchReplace: '.config('editormd.searchReplace').',
+            emoji: '.config('editormd.emoji').',
+            taskList: '.config('editormd.taskList').',
+            tocm: '.config('editormd.tocm').',
+            tex: '.config('editormd.tex').',
+            flowChart: '.config('editormd.flowChart').',
+            sequenceDiagram: '.config('editormd.sequenceDiagram').',
+            imageUpload: '.config('editormd.imageUpload').',
             imageFormats:["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-            imageUploadURL: "'.config('editormd.upload_url').'?_token=' . csrf_token() .'",
+            imageUploadURL: "'.config('editormd.upload_url').'?_token='.csrf_token().'",
         });
     })
 </script>';
     }
 }
 
-
-if (!function_exists("editor_preview_init")) {
+if (! function_exists('editor_preview_init')) {
     function editor_preview_init()
     {
         return '

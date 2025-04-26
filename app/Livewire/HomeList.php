@@ -3,18 +3,17 @@
 namespace App\Livewire;
 
 use App\Enum\Article as ArticleEnum;
+use App\Models\Article;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
-use App\Models\Article;
 
 class HomeList extends Component
 {
-
     public object $articles;
 
-    protected string $keyword='';
+    protected string $keyword = '';
 
-    protected $listeners=['searchEvent'=>'search'];
+    protected $listeners = ['searchEvent' => 'search'];
 
     public function render()
     {
@@ -26,20 +25,23 @@ class HomeList extends Component
         $this->articles();
     }
 
-    public function articles(){
-        if($this->keyword){
+    public function articles()
+    {
+        if ($this->keyword) {
             $builder = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN]);
-            $builder->where('subtitle', 'like', '%' . $this->keyword . '%');
+            $builder->where('subtitle', 'like', '%'.$this->keyword.'%');
             $articles = $builder->get()->reverse();
-        }else{
-            $articles =Cache::remember('articles',86400,function (){
+        } else {
+            $articles = Cache::remember('articles', 86400, function () {
                 return Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->get()->reverse();
             });
         }
         $this->articles = $articles;
     }
-    public function search($data){
-       $this->keyword=$data['keyword'];
-       $this->articles();
+
+    public function search($data)
+    {
+        $this->keyword = $data['keyword'];
+        $this->articles();
     }
 }

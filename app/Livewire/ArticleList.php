@@ -2,14 +2,12 @@
 
 namespace App\Livewire;
 
-use App\Models\Comment;
+use App\Models\Article;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
-use App\Models\Article;
 
 class ArticleList extends Component
 {
-
     public object $articles;
 
     public function render()
@@ -31,6 +29,7 @@ class ArticleList extends Component
     {
         if ($articles->user_id != auth()->user()->id) {
             $this->js('alert("无权操作")');
+
             return false;
         }
         $articles->delete();
@@ -38,5 +37,4 @@ class ArticleList extends Component
         $this->fetchArticle();
         Cache::forget('articles');
     }
-
 }

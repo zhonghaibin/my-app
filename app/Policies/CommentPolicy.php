@@ -45,10 +45,10 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        return  $user->id==$comment->user_id
+        return $user->id == $comment->user_id
             ? Response::allow()
             : Response::deny('你不拥有这个帖子。');
-  }
+    }
 
     /**
      * Determine whether the user can restore the model.

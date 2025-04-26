@@ -9,11 +9,13 @@ use Livewire\Component;
 
 class Posts extends Component
 {
-
     public object $article;
+
     public object $articles;
-    public object|null $prev;
-    public object|null $next;
+
+    public ?object $prev;
+
+    public ?object $next;
 
     public function mount($id)
     {
@@ -25,9 +27,10 @@ class Posts extends Component
         $this->next = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->where('id', '<', $id)->orderBy('id', 'desc')->first();
     }
 
-    public function article($id){
+    public function article($id)
+    {
         $this->article = Article::query()->where(['status' => ArticleEnum::STATUS_OPEN])->findOrFail($id);
-        $this->article->increment("click");
+        $this->article->increment('click');
     }
 
     public function render()
